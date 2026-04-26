@@ -8,6 +8,8 @@ const morgan = require('morgan');
 // Import Routes
 const routes = require('./routes/tournamentRoutes');
 
+
+
 const app = express();
 
 // Middleware
