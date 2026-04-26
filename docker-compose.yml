@@ -1,130 +1,60 @@
 services:
-  mongo_auth:
-    image: mongo:latest
-    container_name: mongo_auth_db
-    restart: always
-    volumes:
-      - ./data/auth:/data/db
-    ports:
-      - "27017:27017"
-
   auth-service:
     build: ./auth-service
-    container_name: auth_service
-    depends_on:
-      - mongo_auth
     ports:
       - "5000:5001"
     environment:
-      - NODE_ENV=production
-    networks:
-      - backend_network
-
-  mongo_tournament:
-    image: mongo:latest
-    container_name: mongo_tournament_db
-    restart: always
-    volumes:
-      - ./data/tournament:/data/db
-    ports:
-      - "27018:27017"
+      - PORT=5001
+      - MONGO_URI=mongodb+srv://engfaisalbhalli_db_user:3I4QmOtnYi1mmqql@sportstms.xqtjc1k.mongodb.net/authdb
+      - JWT_SECRET=3KJ56TYJHJKTYRDFG5H6KJHGF5T6Y7U8I9O0P
+      - NODE_ENV=development
 
   tournament-service:
     build: ./tournament-service
-    container_name: tournament_service
-    depends_on:
-      - mongo_tournament
     ports:
       - "6000:6001"
     environment:
-      - NODE_ENV=production
-    networks:
-      - backend_network
-
-  mongo_team:
-    image: mongo:latest
-    container_name: mongo_team_db
-    restart: always
-    volumes:
-      - ./data/team:/data/db
-    ports:
-      - "27019:27017"
+      - PORT=6001
+      - MONGO_URI=mongodb+srv://engfaisalbhalli_db_user:3I4QmOtnYi1mmqql@sportstms.xqtjc1k.mongodb.net/tournamentdb
+      - JWT_SECRET=3KJ56TYJHJKTYRDFG5H6KJHGF5T6Y7U8I9O0P
+      - NODE_ENV=development
 
   team-service:
     build: ./team-service
-    container_name: team_service
-    depends_on:
-      - mongo_team
     ports:
       - "7000:7001"
     environment:
-      - NODE_ENV=production
-    networks:
-      - backend_network
-
-  mongo_match:
-    image: mongo:latest
-    container_name: mongo_match_db
-    restart: always
-    volumes:
-      - ./data/match:/data/db
-    ports:
-      - "27020:27017"
+      - PORT=7001
+      - MONGO_URI=mongodb+srv://engfaisalbhalli_db_user:3I4QmOtnYi1mmqql@sportstms.xqtjc1k.mongodb.net/teamdb
+      - JWT_SECRET=3KJ56TYJHJKTYRDFG5H6KJHGF5T6Y7U8I9O0P
+      - NODE_ENV=development
 
   match-service:
     build: ./match-service
-    container_name: match_service
-    depends_on:
-      - mongo_match
     ports:
       - "8000:8001"
     environment:
-      - NODE_ENV=production
-    networks:
-      - backend_network
-
-  mongo_standings:
-    image: mongo:latest
-    container_name: mongo_standings_db
-    restart: always
-    volumes:
-      - ./data/standings:/data/db
-    ports:
-      - "27021:27017"
+      - PORT=8001
+      - MONGO_URI=mongodb+srv://engfaisalbhalli_db_user:3I4QmOtnYi1mmqql@sportstms.xqtjc1k.mongodb.net/matchdb
+      - JWT_SECRET=3KJ56TYJHJKTYRDFG5H6KJHGF5T6Y7U8I9O0P
+      - NODE_ENV=development
 
   standings-service:
     build: ./standings-service
-    container_name: standings_service
-    depends_on:
-      - mongo_standings
     ports:
       - "9000:9001"
     environment:
-      - NODE_ENV=production
-    networks:
-      - backend_network
-
-  mongo_announcement:
-    image: mongo:latest
-    container_name: mongo_announcement_db
-    restart: always
-    volumes:
-      - ./data/announcement:/data/db
-    ports:
-      - "27022:27017"
+      - PORT=9001
+      - MONGO_URI=mongodb+srv://engfaisalbhalli_db_user:3I4QmOtnYi1mmqql@sportstms.xqtjc1k.mongodb.net/standingsdb
+      - JWT_SECRET=3KJ56TYJHJKTYRDFG5H6KJHGF5T6Y7U8I9O0P
+      - NODE_ENV=development
 
   announcement-service:
     build: ./announcement-service
-    container_name: announcement_service
-    depends_on:
-      - mongo_announcement
     ports:
       - "10000:10001"
     environment:
-      - NODE_ENV=production
-    networks:
-      - backend_network
-
-networks:
-  backend_network:
-    driver: bridge
+      - PORT=10001
+      - MONGO_URI=mongodb+srv://engfaisalbhalli_db_user:3I4QmOtnYi1mmqql@sportstms.xqtjc1k.mongodb.net/announcementdb
+      - JWT_SECRET=3KJ56TYJHJKTYRDFG5H6KJHGF5T6Y7U8I9O0P
+      - NODE_ENV=development
