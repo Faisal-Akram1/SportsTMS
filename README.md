@@ -430,10 +430,6 @@ Planned features:
 
 ---
 
-
----
-
-
 # Conclusion
 
 The **Sports Tournament Management System Backend** provides a structured and scalable foundation for managing sports tournaments through a microservices-based architecture.
