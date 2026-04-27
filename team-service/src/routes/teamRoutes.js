@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.json({
-    message: 'Team Service API is working'
-  });
-});
+const teamController = require('../controllers/teamController');
+
+router.post('/', teamController.createTeam);
+router.get('/', teamController.getTeams);
+router.get('/tournament/:tournamentId', teamController.getTeamsByTournament);
+router.get('/:id', teamController.getTeamById);
+router.post('/:id/players', teamController.addPlayerToTeam);
+router.delete('/:id', teamController.deleteTeam);
 
 module.exports = router;
