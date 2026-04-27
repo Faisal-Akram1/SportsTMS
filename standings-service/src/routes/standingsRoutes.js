@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.json({
-    message: 'Standings Service API is working'
-  });
-});
+const standingsController = require('../controllers/standingsController');
+
+router.get('/:tournamentId', standingsController.getStandingsByTournament);
+router.post('/', standingsController.createOrUpdateStanding);
+router.delete('/:id', standingsController.deleteStanding);
 
 module.exports = router;
