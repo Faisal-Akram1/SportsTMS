@@ -412,8 +412,6 @@ Recommended workflow:
 
 ---
 
----
-
 # Future Improvements
 
 Planned features:
