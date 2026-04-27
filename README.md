@@ -433,20 +433,6 @@ Planned features:
 
 ---
 
-# Acknowledgements
-
-Built using:
-
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-- Docker
-- JWT
-- bcrypt.js
-- Postman
-
----
 
 # Conclusion
 
